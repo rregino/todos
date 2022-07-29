@@ -13,9 +13,11 @@ describe Todo, "#completed?" do
 
 end
 
+# Hmm is it ok to be creating a user here?
 describe Todo, "#complete!" do
   it "updates completed_at" do
-    todo = Todo.create!(email: "test", completed_at: nil)
+    todo = User.create!(email: "test").todos.create!(completed_at: nil)
+    # todo = Todo.create!(email: "test", completed_at: nil)
     todo.complete!
     expect(todo).to be_completed
   end
@@ -23,7 +25,8 @@ end
 
 describe Todo, "#mark_incomplete!" do
   it "sets completed_at to nil" do
-    todo = Todo.create!(email: "test", completed_at: Time.current)
+    todo = User.create!(email: "test").todos.create!(completed_at: Time.current)
+    # todo = Todo.create!(email: "test", completed_at: Time.current)
     todo.mark_incomplete!
     expect(todo).not_to be_completed
   end

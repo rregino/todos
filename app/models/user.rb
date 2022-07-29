@@ -1,17 +1,7 @@
-class User
-  def initialize(email)
-    @email = email
-  end
-
-  def todos
-    Todo.where(:email => @email)
-  end
-
-  def email
-    @email
-  end
+class User < ApplicationRecord
+  has_many :todos
 
   def signed_in?
-    @email.present?
+
   end
 end

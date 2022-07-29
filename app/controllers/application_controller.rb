@@ -7,15 +7,17 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_in?
-    current_user.signed_in?
+    current_user.present?
   end
 
   def sign_in_as(email)
     session[:current_email] = email
+    User.create(email: email)
   end
 
   def current_user
-    User.new(session[:current_email])
+    # @current_user = User.create(email: session[:current_email])
+    User.find_by(email: session[:current_email])
   end
 
 end

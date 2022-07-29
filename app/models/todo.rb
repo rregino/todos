@@ -1,6 +1,6 @@
 class Todo < ApplicationRecord
-  validates :email, presence: true
-  
+  belongs_to :user
+
   def complete!
     touch :completed_at
   end
