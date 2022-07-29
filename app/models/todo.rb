@@ -1,6 +1,8 @@
 class Todo < ApplicationRecord
   belongs_to :user
 
+  validates :title, presence: true, allow_blank: false
+
   def complete!
     touch :completed_at
   end

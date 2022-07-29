@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :todos
 
-  def signed_in?
-
+  def full_name
+    "#{first_name} #{last_name}"
   end
+
 end

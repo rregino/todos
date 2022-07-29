@@ -20,3 +20,12 @@
 
 * Note: Not a super in depth tutorial on tests, more like how to get started on them
 * Tutorial is using an older version of Rails so function names have changed
+
+------
+
+After following above tutorial, tried to use FactoryBot to generate test models
+- `create` vs `build` vs `build_stubbed`
+  - `create` saves to db, triggers model and db validations
+  - `build` doesn't save to db, triggers validation for associated objects, assigns attributes
+  - `build_stubbed` doesn't call db, doesn't build associations, doesn't trigger validations
+  - `build_stubbed` > `build` > `create` in terms of performance
